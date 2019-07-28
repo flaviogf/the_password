@@ -25,3 +25,17 @@
       apt:
         name: supervisor
         state: latest
+    - name: Install software-properties-common
+      apt:
+        name: software-properties-common
+        state: latest
+    - name: Add ppa:certbot
+      apt_repository:
+        repo: ppa:certbot/certbot
+    - name: Install lets-encrypt
+      apt:
+        name:
+          - certbot
+          - python-certbot-nginx
+        state: latest
+        update_cache: yes

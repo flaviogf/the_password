@@ -1,6 +1,7 @@
 import pytest
 
-from app import create_app, db as _db
+from app import create_app
+from app import db as _db
 
 
 @pytest.yield_fixture
@@ -19,5 +20,10 @@ def client(app):
 
 
 @pytest.fixture
-def db():
+def db(app):
     return _db
+
+
+@pytest.fixture
+def runner(app):
+    return app.test_cli_runner()

@@ -1,6 +1,5 @@
 import json
 
-
 from app.models import User
 
 
