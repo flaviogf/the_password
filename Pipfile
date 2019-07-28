@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+coverage = "*"
+pytest = "*"
+pylint = "*"
+autopep8 = "*"
+rope = "*"
+
+[packages]
+alembic = "*"
+psycopg2-binary = "==2.8.3"
+flask = "==1.1.1"
+flask-sqlalchemy = "==2.4.0"
+
+[requires]
+python_version = "3.7"
