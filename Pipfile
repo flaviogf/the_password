@@ -11,10 +11,13 @@ autopep8 = "*"
 rope = "*"
 
 [packages]
-alembic = "*"
+alembic = "==1.0.11"
 psycopg2-binary = "==2.8.3"
 flask = "==1.1.1"
 flask-sqlalchemy = "==2.4.0"
+flask-wtf = "==0.14.2"
+flask-bcrypt = "==0.7.1"
+gunicorn = "==19.9.0"
 
 [requires]
 python_version = "3.7"

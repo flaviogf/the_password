@@ -1,0 +1,27 @@
+---
+
+- hosts: the_password
+  become: yes
+  tasks:
+    - name: Install python3
+      apt:
+        name:
+          - python3
+          - python3-venv
+          - python3-dev
+        state: latest  
+    - name: Install python3.7
+      apt:
+        name:
+          - python3.7
+          - python3.7-venv
+          - python3.7-dev
+        state: latest
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: latest
+    - name: Install supervisor
+      apt:
+        name: supervisor
+        state: latest
