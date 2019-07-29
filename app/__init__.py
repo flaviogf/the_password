@@ -3,9 +3,11 @@ from flask import Flask
 from flask.cli import with_appcontext
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
+login_manager = LoginManager()
 
 
 @click.command('', help='Create a user for access the app.')
@@ -16,7 +18,7 @@ bcrypt = Bcrypt()
 def create_user(name, email, password):
     from app.models import User
 
-    password_hash = bcrypt.generate_password_hash(password)
+    password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
 
     user = User(name=name,
                 email=email,
@@ -35,6 +37,11 @@ def create_app(config):
 
     db.init_app(app)
     bcrypt.init_app(app)
+    login_manager.init_app(app)
+
+    from app.models import User
+    login_manager.user_loader(lambda user_id: User.query.get(user_id))
+    login_manager.login_view = 'user.login'
 
     from app.user.views import user
     app.register_blueprint(user)

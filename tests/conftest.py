@@ -2,6 +2,7 @@ import pytest
 
 from app import create_app
 from app import db as _db
+from app import bcrypt as _bcrypt
 
 
 @pytest.yield_fixture
@@ -27,3 +28,8 @@ def db(app):
 @pytest.fixture
 def runner(app):
     return app.test_cli_runner()
+
+
+@pytest.fixture
+def bcrypt(app):
+    return _bcrypt

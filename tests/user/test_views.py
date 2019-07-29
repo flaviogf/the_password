@@ -1,5 +1,3 @@
-import json
-
 from app.models import User
 
 
@@ -9,10 +7,12 @@ class TestLogin:
 
         assert 200 == response.status_code
 
-    def test_should_redirect_to_accounts_when_login(self, client, db):
+    def test_should_redirect_to_accounts_when_login(self, client, db, bcrypt):
+        password = bcrypt.generate_password_hash('sasuke')
+
         naruto = User(name='naruto',
                       email='naruto@gmail.com',
-                      password='sasuke')
+                      password=password)
 
         db.session.add(naruto)
 
@@ -20,20 +20,57 @@ class TestLogin:
 
         data = {
             'email': naruto.email,
-            'password': naruto.password
+            'password': 'sasuke'
         }
 
         response = client.post('/login',
-                               data=json.dumps(data),
+                               data=data,
                                follow_redirects=True)
 
         assert b'The Password - Accounts' in response.data
 
-    def test_should_return_email_or_password_incorrect_when_not_login(self, client, db):
-        pass
+    def test_should_return_email_or_password_incorrect_when_not_login(self, client, db, bcrypt):
+        password = bcrypt.generate_password_hash('sasuke')
+
+        naruto = User(name='naruto',
+                      email='naruto@gmail.com',
+                      password=password)
+
+        db.session.add(naruto)
+
+        db.session.commit()
+
+        data = {
+            'email': naruto.email,
+            'password': 'wrong'
+        }
+
+        response = client.post('/login',
+                               data=data,
+                               follow_redirects=True)
+
+        assert b'Email or password incorrect.' in response.data
 
     def test_should_return_field_required_when_not_inform_email(self, client):
-        pass
+        data = {
+            'email': '',
+            'password': 'test123'
+        }
+
+        response = client.post('/login',
+                               data=data,
+                               follow_redirects=True)
+
+        assert b'This field is required.' in response.data
 
     def test_should_return_field_required_when_not_inform_password(self, client):
-        pass
+        data = {
+            'email': 'naruto@gmail.com',
+            'password': ''
+        }
+
+        response = client.post('/login',
+                               data=data,
+                               follow_redirects=True)
+
+        assert b'This field is required.' in response.data
