@@ -1,0 +1,14 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100vh;
+}
+
+body {
+    background-color: $background-color;
+    color: $text-color-light-area;
+    height: 100vh;
+}

@@ -5,10 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jgthms/minireset.css/master/minireset.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css">
     <title>The Password - {{ title }}</title>
 </head>
 
 <body>
+    {% if current_user.is_authenticated %}
+    <nav>
+        <ul>
+            <li>
+                <a href="#">{{ current_user.name }}</a>
+            </li>
+            <li>
+                <a href="{{ url_for('user.logout') }}">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <aside>
+        <ul>
+            <li>
+                <a href="{{ url_for('accounts.pagination') }}">Search</a>
+            </li>
+            <li>
+                <a href="{{ url_for('accounts.create') }}">Create</a>
+            </li>
+        </ul>
+    </aside>
+    {% endif %}
+
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
@@ -19,6 +46,8 @@
 
     {% block content %}
     {% endblock %}
+
+    <script src="{{ url_for('static', filename='app.min.js') }}"></script>
 </body>
 
 </html>

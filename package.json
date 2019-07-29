@@ -1,0 +1,20 @@
+{
+  "name": "the_password",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/flaviogf/the_password.git",
+  "author": "flaviogf <flavio.fernandes6@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "css-loader": "3.1.0",
+    "node-sass": "4.12.0",
+    "sass-loader": "7.1.0",
+    "style-loader": "0.23.1",
+    "webpack": "4.38.0",
+    "webpack-cli": "3.3.6"
+  },
+  "scripts": {
+    "start": "yarn webpack --watch --watch-poll --mode development --color",
+    "build": "yarn webpack --mode production --color"
+  }
+}

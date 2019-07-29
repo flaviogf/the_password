@@ -2,7 +2,7 @@ from app.models import User
 
 
 class TestLogin:
-    def test_should_access_login_return_status_200(self, client):
+    def test_should_access_return_status_200(self, client):
         response = client.get('/login', follow_redirects=True)
 
         assert 200 == response.status_code
@@ -27,7 +27,7 @@ class TestLogin:
                                data=data,
                                follow_redirects=True)
 
-        assert b'The Password - Accounts' in response.data
+        assert b'The Password - Search Accounts' in response.data
 
     def test_should_return_email_or_password_incorrect_when_not_login(self, client, db, bcrypt):
         password = bcrypt.generate_password_hash('sasuke')
@@ -74,3 +74,10 @@ class TestLogin:
                                follow_redirects=True)
 
         assert b'This field is required.' in response.data
+
+
+class TestLogout:
+    def test_should_redirect_to_login_when_logout(self, client):
+        response = client.get('/logout', follow_redirects=True)
+
+        assert b'The Password - Login' in response.data
