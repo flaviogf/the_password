@@ -6,6 +6,7 @@ class Config:
 class Testing(Config):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
     WTF_CSRF_ENABLED = False
+    LOGIN_DISABLED = True
 
 
 class Production(Config):
