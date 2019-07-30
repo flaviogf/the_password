@@ -12,3 +12,30 @@ body {
     color: $text-color-light-area;
     height: 100vh;
 }
+
+.alert {
+    align-items: center;
+    position: relative;
+    padding: 0 16px;
+    color: white;
+    display: flex;
+    height: 50px;
+}
+
+.alert::before {
+    background-color: rgba(0,0,0,.2);
+    position: absolute;
+    height: 50px;
+    content: "";
+    width: 5px;
+    left: 0;
+    top: 0;
+}
+
+.alert--danger {
+    background-color: $danger-color;
+}
+
+.alert--success {
+    background-color: $success-color;
+}

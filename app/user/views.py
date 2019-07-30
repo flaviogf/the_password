@@ -21,7 +21,7 @@ def login():
 
             return redirect(next_url or url_for('accounts.pagination'))
 
-        flash('Email or password incorrect.')
+        flash('Email or password incorrect.', 'danger')
 
     return render_template('login.html',
                            title='Login',

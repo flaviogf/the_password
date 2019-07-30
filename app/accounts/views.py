@@ -36,7 +36,7 @@ def create():
 
         db.session.commit()
 
-        flash('Account created successfully.')
+        flash('Account created successfully.', 'success')
 
         return redirect(url_for('accounts.pagination'))
 

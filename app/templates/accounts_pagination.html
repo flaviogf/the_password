@@ -1,40 +1,82 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Login</th>
-            <th colspan="2">Password</th>
-        </tr>
-    </thead>
+<main class="accounts_pagination__wrapper">
+    <nav class="accounts_pagination__nav">
+        <ul>
+            <li class="accounts_pagination__nav-item">
+                <a href="{{ url_for('accounts.pagination') }}">
+                    <i class="lni-search"></i>
+                </a>
+            </li>
+            <li class="accounts_pagination__nav-item">
+                <a href="{{ url_for('accounts.create') }}">
+                    <i class="lni-plus"></i>
+                </a>
+            </li>
+            <li class="accounts_pagination__nav-item">
+                <a href="#">
+                    <i class="lni-user"></i>
+                </a>
+            </li>
+            <li class="accounts_pagination__nav-item">
+                <a href="{{ url_for('user.logout') }}">
+                    <i class="lni-exit"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-    <tbody>
-        {% for account in accounts.items %}
-        <tr>
-            <td>{{ account.name }}</td>
-            <td>{{ account.login }}</td>
-            <td>{{ account.password }}</td>
-            <td>
-                <a href="#">Show</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <section class="accounts_pagination__content">
+        <div class="accounts_pagination__card">
+            <table class="accounts_pagination__table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Login</th>
+                        <th style="width: 50px">Pass</th>
+                    </tr>
+                </thead>
 
-{% if accounts.has_prev %}
-<a href="{{ url_for('accounts.pagination', page=accounts.prev_num) }}">Prev</a>
-{% else %}
-<span> Prev </span>
-{% endif %}
+                <tbody>
+                    {% for account in accounts.items %}
+                    <tr>
+                        <td>{{ account.name }}</td>
+                        <td>{{ account.login }}</td>
+                        <td class="accounts_pagination__table--text-center" style="width: 50px">
+                            <a class="accounts_pagination__table-button" href="#">
+                                <i class="lni-clipboard"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-<span>{{ accounts.page }}</span>
+            <div class="accounts_pagination__pages">
+                {% if accounts.has_prev %}
+                <a href="{{ url_for('accounts.pagination', page=accounts.prev_num) }}">
+                    <i class="lni-chevron-left"></i>
+                </a>
+                {% else %}
+                <span>
+                    <i class="lni-chevron-left"></i>
+                </span>
+                {% endif %}
 
-{% if accounts.has_next %}
-<a href="{{ url_for('accounts.pagination', page=accounts.next_num) }}">Next</a>
-{% else %}
-<span> Next </span>
-{% endif %}
+                <span>{{ accounts.page }}</span>
+
+                {% if accounts.has_next %}
+                <a href="{{ url_for('accounts.pagination', page=accounts.next_num) }}">
+                    <i class="lni-chevron-right"></i>
+                </a>
+                {% else %}
+                <span>
+                    <i class="lni-chevron-right"></i>
+                </span>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</main>
 {% endblock %}

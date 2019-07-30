@@ -42,6 +42,7 @@ def create_app(config):
     from app.models import User
     login_manager.user_loader(lambda user_id: User.query.get(user_id))
     login_manager.login_view = 'user.login'
+    login_manager.login_message_category = 'danger'
 
     from app.user.views import user
     app.register_blueprint(user)

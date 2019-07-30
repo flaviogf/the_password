@@ -10,4 +10,4 @@ class Testing(Config):
 
 
 class Production(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@localhost/the_password'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@159.65.221.13:5432/the_password'
