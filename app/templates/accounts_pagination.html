@@ -2,30 +2,7 @@
 
 {% block content %}
 <main class="accounts_pagination__wrapper">
-    <nav class="accounts_pagination__nav">
-        <ul>
-            <li class="accounts_pagination__nav-item">
-                <a href="{{ url_for('accounts.pagination') }}">
-                    <i class="lni-search"></i>
-                </a>
-            </li>
-            <li class="accounts_pagination__nav-item">
-                <a href="{{ url_for('accounts.create') }}">
-                    <i class="lni-plus"></i>
-                </a>
-            </li>
-            <li class="accounts_pagination__nav-item">
-                <a href="#">
-                    <i class="lni-user"></i>
-                </a>
-            </li>
-            <li class="accounts_pagination__nav-item">
-                <a href="{{ url_for('user.logout') }}">
-                    <i class="lni-exit"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    {% include "navbar.html" %}
 
     <section class="accounts_pagination__content">
         <div class="accounts_pagination__card">
@@ -44,9 +21,9 @@
                         <td>{{ account.name }}</td>
                         <td>{{ account.login }}</td>
                         <td class="accounts_pagination__table--text-center" style="width: 50px">
-                            <a class="accounts_pagination__table-button" href="#">
+                            <button class="accounts_pagination__table-button" data-password="{{ account.password }}">
                                 <i class="lni-clipboard"></i>
-                            </a>
+                            </button>
                         </td>
                     </tr>
                     {% endfor %}

@@ -10,31 +10,6 @@ $table-border-color: rgba(0, 0, 0, 0.07);
         "content";
 }
 
-.accounts_pagination__nav {
-    background-color: $primary-color;
-    grid-area: nav;
-    padding: 16px;
-}
-
-.accounts_pagination__nav ul {
-    justify-content: flex-end;
-    display: flex;
-}
-
-.accounts_pagination__nav-item {
-    margin-right: 8px;
-}
-
-.accounts_pagination__nav-item:last-child {
-    margin-right: 0;
-}
-
-.accounts_pagination__nav-item a {
-    color: $text-color-dark-area;
-    text-decoration: none;
-    font-size: 1.3rem;
-}
-
 .accounts_pagination__content {
     grid-area: content;
     padding: 0 16px;
@@ -95,8 +70,10 @@ $table-border-color: rgba(0, 0, 0, 0.07);
 }
 
 .accounts_pagination__table-button {
+    background-color: transparent;
     color: $primary-color;
-    text-decoration: none;
+    outline: none;
+    border: none;
 }
 
 .accounts_pagination__pages {
@@ -124,4 +101,17 @@ $table-border-color: rgba(0, 0, 0, 0.07);
 .accounts_pagination__pages span:last-child {
     border-radius: 0 2px 2px 0;
     border-left: none;
+}
+
+@media(min-width: 768px) {
+    .accounts_pagination__content {
+        margin: 0 auto;
+        width: 720px;
+    }
+
+    .accounts_pagination__table td,
+    .accounts_pagination__table th {
+        font-size: 0.9rem;
+        overflow: hidden;
+    }
 }

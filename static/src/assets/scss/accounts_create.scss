@@ -1,0 +1,71 @@
+.accounts_create__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 225px 1fr;
+    grid-template-areas:
+        "nav"
+        "content";
+}
+
+.accounts_create__content {
+    grid-area: content;
+    padding: 0 16px;
+}
+
+.accounts_create__card {
+    background-color: white;
+    border-radius: 2px;
+    padding: 15px 20px;
+    margin-top: -50px;
+}
+
+.accounts_create__form_group {
+    flex-direction: column;
+    display: flex;
+    margin: 5px 0;
+}
+
+.accounts_create__form_label {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #323232;
+}
+
+.accounts_create__form_input {
+    border: 1px solid lightgrey;
+    transition: 0.3s ease-in;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    padding: 5px 8px;
+    outline: none;
+}
+
+.accounts_create__form_input:focus {
+    border: 1px solid $primary-color;
+}
+
+.accounts_create__btn {
+    background-color: #92c755;
+    border: 1px solid #8bc34a;
+    border-radius: 2px;
+    color: white;
+    padding: 6px;
+    width: 85px;
+}
+
+.accounts_create__form_group--rigth {
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+.accounts_create__form_error {
+    color: $danger-color;
+    font-size: .8rem;
+}
+
+@media(min-width: 768px) {
+    .accounts_create__content {
+        margin: 0 auto;
+        width: 720px;
+    }
+}
