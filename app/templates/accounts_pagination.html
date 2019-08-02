@@ -11,7 +11,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Login</th>
-                        <th style="width: 50px">Pass</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
 
@@ -20,9 +20,13 @@
                     <tr>
                         <td>{{ account.name }}</td>
                         <td>{{ account.login }}</td>
-                        <td class="accounts_pagination__table--text-center" style="width: 50px">
+                        <td class="accounts_pagination__table-actions">
                             <button class="accounts_pagination__table-button" data-password="{{ account.password }}">
                                 <i class="lni-clipboard"></i>
+                            </button>
+                            <button class="accounts_pagination__table-button accounts_pagination__table-button--info"
+                                data-password="{{ account.password }}">
+                                <i class="lni-pencil"></i>
                             </button>
                         </td>
                     </tr>

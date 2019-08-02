@@ -1,4 +1,5 @@
 .accounts_create__wrapper {
+    height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 225px 1fr;
@@ -16,7 +17,7 @@
     background-color: white;
     border-radius: 2px;
     padding: 15px 20px;
-    margin-top: -50px;
+    margin-top: -75px;
 }
 
 .accounts_create__form_group {

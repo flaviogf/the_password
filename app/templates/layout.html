@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/jgthms/minireset.css/master/minireset.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
     <link rel="stylesheet" href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <title>The Password - {{ title }}</title>
 </head>
 
@@ -25,7 +26,7 @@
     {% block content %}
     {% endblock %}
 
-    <script src="{{ url_for('static', filename='app.min.js') }}"></script>
+    
 </body>
 
 </html>
