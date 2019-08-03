@@ -24,10 +24,10 @@
                             <button class="accounts_pagination__table-button" data-password="{{ account.password }}">
                                 <i class="lni-clipboard"></i>
                             </button>
-                            <button class="accounts_pagination__table-button accounts_pagination__table-button--info"
-                                data-password="{{ account.password }}">
+                            <a class="accounts_pagination__table-button accounts_pagination__table-button--info"
+                                href="{{ url_for('accounts.update', id=account.id) }}">
                                 <i class="lni-pencil"></i>
-                            </button>
+                            </a>
                         </td>
                     </tr>
                     {% endfor %}

@@ -14,4 +14,4 @@ class Development(Config):
 
 
 class Production(Config):
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///db.sqlite3'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@localhost/the_password'

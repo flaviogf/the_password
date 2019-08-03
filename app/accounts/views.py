@@ -43,3 +43,32 @@ def create():
     return render_template('accounts_create.html',
                            title='Create Accounts',
                            form=form)
+
+
+@accounts.route('/accounts/<int:id>', methods=['GET', 'POST'])
+@login_required
+def update(id):
+    account = (Accounts.query
+               .filter_by(id=id, user_id=current_user.get_id())
+               .first_or_404())
+
+    form = CreateAccountForm()
+
+    if form.validate_on_submit():
+        account.name = form.name.data
+        account.login = form.login.data
+        account.password = form.password.data
+        db.session.commit()
+
+        flash('Account updated successfully.', 'success')
+
+        return redirect(url_for('accounts.pagination'))
+
+    elif request.method == 'GET':
+        form.name.data = account.name
+        form.login.data = account.login
+        form.password.data = account.password
+
+    return render_template('accounts_create.html',
+                           title='Update Account',
+                           form=form)

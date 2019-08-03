@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 
 from app.models import User
 from app.user.forms import LoginForm
@@ -9,6 +9,9 @@ user = Blueprint('user', __name__)
 
 @user.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('accounts.pagination'))
+
     form = LoginForm()
 
     if form.validate_on_submit():
