@@ -1,49 +1,50 @@
-{% extends "layout.html" %}
-
-{% block content %}
+{% extends "layout.html" %} {% block content %}
 <main class="accounts_create__wrapper">
-    {% include "navbar.html" %}
+  {% include "navbar.html" %}
 
-    <section class="accounts_create__content">
-        <div class="accounts_create__card">
-            <form method="POST" novalidate>
-                {{ form.hidden_tag() }}
+  <section class="accounts_create__content">
+    <div class="accounts_create__card">
+      <form method="POST" novalidate>
+        {{ form.hidden_tag() }}
 
-                <div class="accounts_create__form_group">
-                    {{ form.name.label(class="accounts_create__form_label") }}
-                    {{ form.name(class="accounts_create__form_input") }}
-                    {% if form.name.errors %}
-                    {% for error in form.name.errors %}
-                    <span class="accounts_create__form_error">{{ error }}</span>
-                    {% endfor %}
-                    {% endif %}
-                </div>
-
-                <div class="accounts_create__form_group">
-                    {{ form.login.label(class="accounts_create__form_label") }}
-                    {{ form.login(class="accounts_create__form_input") }}
-                    {% if form.login.errors %}
-                    {% for error in form.login.errors %}
-                    <span class="accounts_create__form_error">{{ error }}</span>
-                    {% endfor %}
-                    {% endif %}
-                </div>
-
-                <div class="accounts_create__form_group">
-                    {{ form.password.label(class="accounts_create__form_label") }}
-                    {{ form.password(class="accounts_create__form_input") }}
-                    {% if form.password.errors %}
-                    {% for error in form.password.errors %}
-                    <span class="accounts_create__form_error">{{ error }}</span>
-                    {% endfor %}
-                    {% endif %}
-                </div>
-
-                <div class="accounts_create__form_group accounts_create__form_group--rigth">
-                    {{ form.submit(class="accounts_create__btn") }}
-                </div>
-            </form>
+        <div class="accounts_create__form_group">
+          {{ form.name.label(class="accounts_create__form_label") }}
+          {{ form.name(class="accounts_create__form_input") }}
+          {% if form.name.errors %} {% for error in form.name.errors %}
+          <span class="accounts_create__form_error">{{ error }}</span>
+          {% endfor %} {% endif %}
         </div>
-    </section>
+
+        <div class="accounts_create__form_group">
+          {{ form.login.label(class="accounts_create__form_label") }}
+          {{ form.login(class="accounts_create__form_input") }}
+          {% if form.login.errors %} {% for error in form.login.errors %}
+          <span class="accounts_create__form_error">{{ error }}</span>
+          {% endfor %} {% endif %}
+        </div>
+
+        <div class="accounts_create__form_group">
+          {{ form.password.label(class="accounts_create__form_label") }}
+          {{ form.password(class="accounts_create__form_input") }}
+          <button
+            data-show-password
+            class="accounts_create__form__show-password"
+            type="button"
+          >
+            <i class="lni-eye"></i>
+          </button>
+          {% if form.password.errors %} {% for error in form.password.errors %}
+          <span class="accounts_create__form_error">{{ error }}</span>
+          {% endfor %} {% endif %}
+        </div>
+
+        <div
+          class="accounts_create__form_group accounts_create__form_group--rigth"
+        >
+          {{ form.submit(class="accounts_create__btn") }}
+        </div>
+      </form>
+    </div>
+  </section>
 </main>
 {% endblock %}

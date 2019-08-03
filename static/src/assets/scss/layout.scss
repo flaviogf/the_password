@@ -1,41 +1,41 @@
 * {
-    font-family: 'Open Sans', sans-serif;
-    box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
 }
 
 html {
-    height: 100vh;
+  height: 100vh;
 }
 
 body {
-    background-color: $background-color;
-    color: $text-color-light-area;
-    height: 100vh;
+  background-color: $background-color;
+  color: $text-color-light-area;
+  height: 100vh;
 }
 
 .alert {
-    align-items: center;
-    position: relative;
-    padding: 0 16px;
-    color: white;
-    display: flex;
-    height: 50px;
+  align-items: center;
+  position: relative;
+  padding: 0 16px;
+  color: white;
+  display: flex;
+  height: 50px;
 }
 
 .alert::before {
-    background-color: rgba(0,0,0,.2);
-    position: absolute;
-    height: 50px;
-    content: "";
-    width: 5px;
-    left: 0;
-    top: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  height: 50px;
+  content: "";
+  width: 5px;
+  left: 0;
+  top: 0;
 }
 
 .alert--danger {
-    background-color: $danger-color;
+  background-color: $danger-color;
 }
 
 .alert--success {
-    background-color: $success-color;
+  background-color: $success-color;
 }

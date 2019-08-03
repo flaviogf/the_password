@@ -1,8 +1,14 @@
-from flask import Blueprint, flash, redirect, render_template, request, url_for
-from flask_login import login_user, logout_user, current_user
+import secrets
+from os import path
 
+from flask import (Blueprint, current_app, flash, redirect, render_template,
+                   request, url_for)
+from flask_login import current_user, login_required, login_user, logout_user
+from PIL import Image
+
+from app import db
 from app.models import User
-from app.user.forms import LoginForm
+from app.user.forms import LoginForm, ProfileForm
 
 user = Blueprint('user', __name__)
 
@@ -26,7 +32,7 @@ def login():
 
         flash('Email or password incorrect.', 'danger')
 
-    return render_template('login.html',
+    return render_template('user_login.html',
                            title='Login',
                            form=form)
 
@@ -35,3 +41,48 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('user.login'))
+
+
+@user.route('/profile', methods=['GET', 'POST'])
+@login_required
+def profile():
+    form = ProfileForm()
+
+    if form.validate_on_submit():
+        if form.avatar.data:
+            current_user.avatar = save_avatar(form.avatar.data)
+
+        current_user.name = form.name.data
+        current_user.email = form.email.data
+
+        db.session.commit()
+
+        return redirect(url_for('accounts.pagination'))
+
+    elif request.method == 'GET':
+        form.name.data = current_user.name
+        form.email.data = current_user.email
+
+    avatar = url_for('static',
+                     filename=f'uploads/{current_user.avatar}')
+
+    return render_template('user_profile.html',
+                           title='Profile',
+                           form=form,
+                           avatar=avatar)
+
+
+def save_avatar(file):
+    image = Image.open(file)
+
+    image.thumbnail((100, 100))
+
+    upload_folder = current_app.config.get('UPLOAD_FOLDER')
+
+    avatar = f'{secrets.token_hex()}.png'
+
+    filename = path.join(upload_folder, avatar)
+
+    image.save(filename)
+
+    return avatar

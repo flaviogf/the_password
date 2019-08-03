@@ -1,24 +1,24 @@
 .navbar__nav {
-    background-color: $primary-color;
-    grid-area: nav;
-    padding: 16px;
+  background-color: $primary-color;
+  grid-area: nav;
+  padding: 16px;
 }
 
 .navbar__nav ul {
-    justify-content: flex-end;
-    display: flex;
+  justify-content: flex-end;
+  display: flex;
 }
 
 .navbar__nav-item {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .navbar__nav-item:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .navbar__nav-item a {
-    color: $text-color-dark-area;
-    text-decoration: none;
-    font-size: 1.3rem;
+  color: $text-color-dark-area;
+  text-decoration: none;
+  font-size: 1.3rem;
 }

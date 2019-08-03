@@ -1,24 +1,24 @@
 <nav class="navbar__nav">
-    <ul>
-        <li class="navbar__nav-item">
-            <a href="{{ url_for('accounts.pagination') }}">
-                <i class="lni-search"></i>
-            </a>
-        </li>
-        <li class="navbar__nav-item">
-            <a href="{{ url_for('accounts.create') }}">
-                <i class="lni-plus"></i>
-            </a>
-        </li>
-        <li class="navbar__nav-item">
-            <a href="#">
-                <i class="lni-user"></i>
-            </a>
-        </li>
-        <li class="navbar__nav-item">
-            <a href="{{ url_for('user.logout') }}">
-                <i class="lni-exit"></i>
-            </a>
-        </li>
-    </ul>
+  <ul>
+    <li class="navbar__nav-item">
+      <a href="{{ url_for('accounts.pagination') }}">
+        <i class="lni-search"></i>
+      </a>
+    </li>
+    <li class="navbar__nav-item">
+      <a href="{{ url_for('accounts.create') }}">
+        <i class="lni-plus"></i>
+      </a>
+    </li>
+    <li class="navbar__nav-item">
+      <a href="{{ url_for('user.profile') }}">
+        <i class="lni-user"></i>
+      </a>
+    </li>
+    <li class="navbar__nav-item">
+      <a href="{{ url_for('user.logout') }}">
+        <i class="lni-exit"></i>
+      </a>
+    </li>
+  </ul>
 </nav>

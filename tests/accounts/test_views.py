@@ -92,7 +92,7 @@ class TestUpdate:
 
         db.session.commit()
 
-        response = client.post('/accounts/1', follow_redirects=True)
+        response = client.get('/accounts/1', follow_redirects=True)
 
         assert 200 == response.status_code
 
@@ -182,3 +182,66 @@ class TestUpdate:
         response = client.post('/accounts/1', data=data, follow_redirects=True)
 
         assert b'Account updated successfully.' in response.data
+
+    def test_should_return_field_required_when_not_inform_name(self, client, db):
+        account = Accounts(name='microsoft',
+                           login='naruto@email.com',
+                           password='test123')
+
+        db.session.add(account)
+
+        db.session.commit()
+
+        data = {
+            'name': '',
+            'login': 'test',
+            'password': 'test'
+        }
+
+        response = client.post('/accounts/1',
+                               data=data,
+                               follow_redirects=True)
+
+        assert b'This field is required.' in response.data
+
+    def test_should_return_field_required_when_not_inform_login(self, client, db):
+        account = Accounts(name='microsoft',
+                           login='naruto@email.com',
+                           password='test123')
+
+        db.session.add(account)
+
+        db.session.commit()
+
+        data = {
+            'name': 'test',
+            'login': '',
+            'password': 'test'
+        }
+
+        response = client.post('/accounts/1',
+                               data=data,
+                               follow_redirects=True)
+
+        assert b'This field is required.' in response.data
+
+    def test_should_return_field_required_when_not_inform_password(self, client, db):
+        account = Accounts(name='microsoft',
+                           login='naruto@email.com',
+                           password='test123')
+
+        db.session.add(account)
+
+        db.session.commit()
+
+        data = {
+            'name': 'test',
+            'login': 'test',
+            'password': ''
+        }
+
+        response = client.post('/accounts/1',
+                               data=data,
+                               follow_redirects=True)
+
+        assert b'This field is required.' in response.data

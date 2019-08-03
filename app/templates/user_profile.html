@@ -1,0 +1,41 @@
+{% extends "layout.html" %} {% block content %}
+<main class="profile__wrapper">
+  {% include "navbar.html" %}
+
+  <section class="profile__content">
+    <div class="profile__card">
+      <form method="POST" enctype="multipart/form-data" novalidate>
+        <header class="profile__header">
+          <img class="profile__avatar" src="{{ avatar }}" alt="avatar" />
+
+          {{ form.avatar(class="profile__form_file") }}
+        </header>
+
+        <div class="profile__form" method="POST" novalidate>
+          {{ form.hidden_tag() }}
+
+          <div class="profile__form_group">
+            {{ form.name.label(class="profile__form_label") }}
+            {{ form.name(class="profile__form_input") }}
+            {% if form.name.errors %} {% for error in form.name.errors %}
+            <span class="profile__form_error">{{ error }}</span>
+            {% endfor %} {% endif %}
+          </div>
+
+          <div class="profile__form_group">
+            {{ form.email.label(class="profile__form_label") }}
+            {{ form.email(class="profile__form_input") }}
+            {% if form.email.errors %} {% for error in form.email.errors %}
+            <span class="profile__form_error">{{ error }}</span>
+            {% endfor %} {% endif %}
+          </div>
+
+          <div class="profile__form_group profile__form_group--rigth">
+            {{ form.submit(class="profile__btn") }}
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+{% endblock %}

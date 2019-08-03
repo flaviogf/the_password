@@ -28,7 +28,11 @@ def upgrade():
                               nullable=False),
                     sa.Column('password',
                               sa.String(250),
-                              nullable=False))
+                              nullable=False),
+                    sa.Column('avatar',
+                              sa.String(250),
+                              nullable=False,
+                              default='default.png'))
 
 
 def downgrade():

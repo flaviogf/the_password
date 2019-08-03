@@ -14,6 +14,9 @@ class User(db.Model, UserMixin):
                    nullable=False)
     password = Column(String(250),
                       nullable=False)
+    avatar = Column(String(250),
+                    nullable=False,
+                    default='default.png')
     accounts = relationship('Accounts', backref='user')
 
     def authenticate(self, password):

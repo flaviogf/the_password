@@ -41,7 +41,7 @@ def create():
         return redirect(url_for('accounts.pagination'))
 
     return render_template('accounts_create.html',
-                           title='Create Accounts',
+                           title='Create Account',
                            form=form)
 
 

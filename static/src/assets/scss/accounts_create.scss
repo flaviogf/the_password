@@ -1,72 +1,96 @@
 .accounts_create__wrapper {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 225px 1fr;
-    grid-template-areas:
-        "nav"
-        "content";
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 225px 1fr;
+  grid-template-areas:
+    "nav"
+    "content";
 }
 
 .accounts_create__content {
-    grid-area: content;
-    padding: 0 16px;
+  grid-area: content;
+  padding: 0 16px;
 }
 
 .accounts_create__card {
-    background-color: white;
-    border-radius: 2px;
-    padding: 15px 20px;
-    margin-top: -75px;
+  background-color: white;
+  border-radius: 2px;
+  padding: 15px 20px;
+  margin-top: -75px;
 }
 
 .accounts_create__form_group {
-    flex-direction: column;
-    display: flex;
-    margin: 5px 0;
+  flex-direction: column;
+  position: relative;
+  display: flex;
+  margin: 5px 0;
 }
 
 .accounts_create__form_label {
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-    color: #323232;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #323232;
 }
 
 .accounts_create__form_input {
-    border: 1px solid lightgrey;
-    transition: 0.3s ease-in;
-    margin-bottom: 5px;
-    border-radius: 2px;
-    padding: 5px 8px;
-    outline: none;
+  border: 1px solid lightgrey;
+  transition: 0.3s ease-in;
+  margin-bottom: 5px;
+  border-radius: 2px;
+  padding: 5px 8px;
+  outline: none;
 }
 
 .accounts_create__form_input:focus {
-    border: 1px solid $primary-color;
+  border: 1px solid $primary-color;
+}
+
+.accounts_create__form__show-password {
+  background-color: $primary-color;
+  border-radius: 0 2px 2px 0;
+  position: absolute;
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  height: 30px;
+  width: 30px;
+  right: 0px;
+  top: 24px;
+}
+
+.accounts_create__form__show-password:active {
+  background-color: lighten($primary-color, 10);
 }
 
 .accounts_create__btn {
-    background-color: #92c755;
-    border: 1px solid #8bc34a;
-    border-radius: 2px;
-    color: white;
-    padding: 6px;
-    width: 85px;
+  background-color: #92c755;
+  border: 1px solid #8bc34a;
+  border-radius: 2px;
+  cursor: pointer;
+  color: white;
+  padding: 6px;
+  width: 85px;
+}
+
+.accounts_create__btn:active {
+  background-color: lighten(#92c755, 10);
 }
 
 .accounts_create__form_group--rigth {
-    justify-content: flex-end;
-    flex-direction: row;
+  justify-content: flex-end;
+  flex-direction: row;
 }
 
 .accounts_create__form_error {
-    color: $danger-color;
-    font-size: .8rem;
+  color: $danger-color;
+  font-size: 0.8rem;
 }
 
-@media(min-width: 768px) {
-    .accounts_create__content {
-        margin: 0 auto;
-        width: 720px;
-    }
+@media (min-width: 768px) {
+  .accounts_create__content {
+    margin: 0 auto;
+    width: 720px;
+  }
 }

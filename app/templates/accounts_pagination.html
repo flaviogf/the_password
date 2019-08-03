@@ -1,63 +1,66 @@
-{% extends "layout.html" %}
-
-{% block content %}
+{% extends "layout.html" %} {% block content %}
 <main class="accounts_pagination__wrapper">
-    {% include "navbar.html" %}
+  {% include "navbar.html" %}
 
-    <section class="accounts_pagination__content">
-        <div class="accounts_pagination__card">
-            <table class="accounts_pagination__table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Login</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
+  <section class="accounts_pagination__content">
+    <div class="accounts_pagination__card">
+      <table class="accounts_pagination__table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Login</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
 
-                <tbody>
-                    {% for account in accounts.items %}
-                    <tr>
-                        <td>{{ account.name }}</td>
-                        <td>{{ account.login }}</td>
-                        <td class="accounts_pagination__table-actions">
-                            <button class="accounts_pagination__table-button" data-password="{{ account.password }}">
-                                <i class="lni-clipboard"></i>
-                            </button>
-                            <a class="accounts_pagination__table-button accounts_pagination__table-button--info"
-                                href="{{ url_for('accounts.update', id=account.id) }}">
-                                <i class="lni-pencil"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <tbody>
+          {% for account in accounts.items %}
+          <tr>
+            <td>{{ account.name }}</td>
+            <td>{{ account.login }}</td>
+            <td class="accounts_pagination__table-actions">
+              <button
+                class="accounts_pagination__table-button"
+                data-password="{{ account.password }}"
+              >
+                <i class="lni-clipboard"></i>
+              </button>
+              <a
+                class="accounts_pagination__table-button accounts_pagination__table-button--info"
+                href="{{ url_for('accounts.update', id=account.id) }}"
+              >
+                <i class="lni-pencil"></i>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
 
-            <div class="accounts_pagination__pages">
-                {% if accounts.has_prev %}
-                <a href="{{ url_for('accounts.pagination', page=accounts.prev_num) }}">
-                    <i class="lni-chevron-left"></i>
-                </a>
-                {% else %}
-                <span>
-                    <i class="lni-chevron-left"></i>
-                </span>
-                {% endif %}
+      <div class="accounts_pagination__pages">
+        {% if accounts.has_prev %}
+        <a href="{{ url_for('accounts.pagination', page=accounts.prev_num) }}">
+          <i class="lni-chevron-left"></i>
+        </a>
+        {% else %}
+        <span>
+          <i class="lni-chevron-left"></i>
+        </span>
+        {% endif %}
 
-                <span>{{ accounts.page }}</span>
+        <span>{{ accounts.page }}</span>
 
-                {% if accounts.has_next %}
-                <a href="{{ url_for('accounts.pagination', page=accounts.next_num) }}">
-                    <i class="lni-chevron-right"></i>
-                </a>
-                {% else %}
-                <span>
-                    <i class="lni-chevron-right"></i>
-                </span>
-                {% endif %}
-            </div>
-        </div>
-    </section>
+        {% if accounts.has_next %}
+        <a href="{{ url_for('accounts.pagination', page=accounts.next_num) }}">
+          <i class="lni-chevron-right"></i>
+        </a>
+        {% else %}
+        <span>
+          <i class="lni-chevron-right"></i>
+        </span>
+        {% endif %}
+      </div>
+    </div>
+  </section>
 </main>
 {% endblock %}

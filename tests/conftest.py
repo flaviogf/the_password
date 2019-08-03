@@ -1,13 +1,15 @@
+from unittest.mock import patch
+
 import pytest
 
+from app import bcrypt as _bcrypt
 from app import create_app
 from app import db as _db
-from app import bcrypt as _bcrypt
 
 
 @pytest.yield_fixture
 def app():
-    app = create_app(config='app.config.Testing')
+    app = create_app(config='config.Testing')
 
     with app.app_context():
         _db.create_all()
@@ -33,3 +35,9 @@ def runner(app):
 @pytest.fixture
 def bcrypt(app):
     return _bcrypt
+
+
+@pytest.yield_fixture
+def user(app):
+    with patch('flask_login.utils._get_user') as _user:
+        yield _user

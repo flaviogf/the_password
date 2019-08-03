@@ -1,150 +1,150 @@
 $table-border-color: rgba(0, 0, 0, 0.07);
 
 .accounts_pagination__wrapper {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 225px 1fr;
-    grid-template-areas:
-        "nav"
-        "content";
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 225px 1fr;
+  grid-template-areas:
+    "nav"
+    "content";
 }
 
 .accounts_pagination__content {
-    grid-area: content;
-    padding: 0 16px;
+  grid-area: content;
+  padding: 0 16px;
 }
 
 .accounts_pagination__card {
-    background-color: white;
-    border-radius: 2px;
-    padding: 15px 20px;
-    margin-top: -75px;
+  background-color: white;
+  border-radius: 2px;
+  padding: 15px 20px;
+  margin-top: -75px;
 }
 
 .accounts_pagination__table {
-    border: 1px solid $table-border-color;
-    margin-bottom: 16px;
-    table-layout: fixed;
-    width: 100%;
+  border: 1px solid $table-border-color;
+  margin-bottom: 16px;
+  table-layout: fixed;
+  width: 100%;
 }
 
 .accounts_pagination__table thead {
-    border-bottom: 2px solid $table-border-color;
+  border-bottom: 2px solid $table-border-color;
 }
 
 .accounts_pagination__table tr {
-    border-bottom: 1px solid $table-border-color;
-    border-top: 1px solid $table-border-color;
+  border-bottom: 1px solid $table-border-color;
+  border-top: 1px solid $table-border-color;
 }
 
 .accounts_pagination__table td,
 .accounts_pagination__table th {
-    border-right: 1px solid $table-border-color;
-    border-left: 1px solid $table-border-color;
-    font-size: 0.8rem;
-    overflow: scroll;
-    padding: 5px;
+  border-right: 1px solid $table-border-color;
+  border-left: 1px solid $table-border-color;
+  font-size: 0.8rem;
+  overflow: scroll;
+  padding: 5px;
 }
 
 .accounts_pagination__table tr:first-child {
-    border-top: none;
+  border-top: none;
 }
 
 .accounts_pagination__table tr:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .accounts_pagination__table td:first-child,
 .accounts_pagination__table th:first-child {
-    border-left: none;
+  border-left: none;
 }
 
 .accounts_pagination__table td:last-child,
 .accounts_pagination__table th:first-child {
-    border-right: none;
+  border-right: none;
 }
 
 .accounts_pagination__table td:last-child,
 .accounts_pagination__table th:last-child {
-    text-align: center;
-    width: 75px;
+  text-align: center;
+  width: 75px;
 }
 
 .accounts_pagination__table-actions {
-    justify-content: flex-start;
-    display: flex;
+  justify-content: flex-start;
+  display: flex;
 }
 
 .accounts_pagination__table-button {
-    background-color: $primary-color;
-    justify-content: center;
-    text-decoration: none;
-    align-items: center;
-    position: relative;
-    border-radius: 2px;
-    margin-right: 2px;
-    color: white;
-    display: flex;
-    outline: none;
-    border: none;
-    height: 25px;
-    padding: 2px;
-    width: 30px;
+  background-color: $primary-color;
+  justify-content: center;
+  text-decoration: none;
+  align-items: center;
+  position: relative;
+  border-radius: 2px;
+  margin-right: 2px;
+  color: white;
+  display: flex;
+  outline: none;
+  border: none;
+  height: 25px;
+  padding: 2px;
+  width: 30px;
 }
 
 .accounts_pagination__table-button:active {
-    background-color: lighten($primary-color, 15);
+  background-color: lighten($primary-color, 15);
 }
 
 .accounts_pagination__table-button--info {
-    background-color: $info-color;
+  background-color: $info-color;
 }
 
 .accounts_pagination__table-button--info:active {
-    background-color: lighten($info-color, 15);
+  background-color: lighten($info-color, 15);
 }
 
 .accounts_pagination__pages {
-    justify-content: flex-end;
-    display: flex;
+  justify-content: flex-end;
+  display: flex;
 }
 
 .accounts_pagination__pages a,
 .accounts_pagination__pages span {
-    border: 1px solid rgba(0, 0, 0, 0.07);
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    padding: 4px;
-    width: 35px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 4px;
+  width: 35px;
 }
 
 .accounts_pagination__pages a:first-child,
 .accounts_pagination__pages span:first-child {
-    border-radius: 2px 0 0 2px;
-    border-right: none;
+  border-radius: 2px 0 0 2px;
+  border-right: none;
 }
 
 .accounts_pagination__pages a:last-child,
 .accounts_pagination__pages span:last-child {
-    border-radius: 0 2px 2px 0;
-    border-left: none;
+  border-radius: 0 2px 2px 0;
+  border-left: none;
 }
 
-@media(min-width: 768px) {
-    .accounts_pagination__content {
-        margin: 0 auto;
-        width: 720px;
-    }
+@media (min-width: 768px) {
+  .accounts_pagination__content {
+    margin: 0 auto;
+    width: 720px;
+  }
 
-    .accounts_pagination__table td,
-    .accounts_pagination__table th {
-        font-size: 0.9rem;
-        overflow: hidden;
-    }
+  .accounts_pagination__table td,
+  .accounts_pagination__table th {
+    font-size: 0.9rem;
+    overflow: hidden;
+  }
 
-    .accounts_pagination__table-button {
-        cursor: pointer;
-    }
+  .accounts_pagination__table-button {
+    cursor: pointer;
+  }
 }
