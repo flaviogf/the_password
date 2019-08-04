@@ -15,9 +15,5 @@ class Testing(Config):
     LOGIN_DISABLED = True
 
 
-class Development(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@localhost/the_password'
-
-
 class Production(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@localhost/the_password'

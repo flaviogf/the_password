@@ -83,7 +83,7 @@ class Accounts(db.Model, FindByMixin, SaveMixin):
                      ForeignKey('user.id'))
 
     @classmethod
-    def paginate(cls, page, per_page=1):
+    def paginate(cls, page, per_page=8):
         return cls.query.filter_by(user_id=current_user.get_id()).paginate(page=page, per_page=per_page)
 
     def update(self, name, login, password):
