@@ -2,7 +2,7 @@ import secrets
 from os import path
 
 from flask import current_app, url_for
-from flask_login import UserMixin, login_user
+from flask_login import UserMixin, login_user, current_user
 from PIL import Image
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
@@ -83,8 +83,8 @@ class Accounts(db.Model, FindByMixin, SaveMixin):
                      ForeignKey('user.id'))
 
     @classmethod
-    def paginate(cls, page, per_page=8):
-        return cls.query.paginate(page=page, per_page=per_page)
+    def paginate(cls, page, per_page=1):
+        return cls.query.filter_by(user_id=current_user.get_id()).paginate(page=page, per_page=per_page)
 
     def update(self, name, login, password):
         self.name = name

@@ -11,8 +11,8 @@ $table-border-color: rgba(0, 0, 0, 0.07);
 }
 
 .accounts_pagination__content {
+  padding: 0 16px 16px 16px;
   grid-area: content;
-  padding: 0 16px;
 }
 
 .accounts_pagination__card {
@@ -114,7 +114,9 @@ $table-border-color: rgba(0, 0, 0, 0.07);
 .accounts_pagination__pages span {
   border: 1px solid rgba(0, 0, 0, 0.07);
   justify-content: center;
+  text-decoration: none;
   align-items: center;
+  color: #323232;
   display: flex;
   padding: 4px;
   width: 35px;
