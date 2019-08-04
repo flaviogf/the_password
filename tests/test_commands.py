@@ -1,4 +1,4 @@
-from app import create_user
+from app.commands import create_user
 from app.models import User
 
 

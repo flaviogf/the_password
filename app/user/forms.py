@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import (BooleanField, FileField, PasswordField, StringField,
                      SubmitField)
 from wtforms.fields.html5 import EmailField
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms.validators import DataRequired, Email
 
 
 class LoginForm(FlaskForm):

@@ -6,7 +6,11 @@
     <div class="profile__card">
       <form method="POST" enctype="multipart/form-data" novalidate>
         <header class="profile__header">
-          <img class="profile__avatar" src="{{ avatar }}" alt="avatar" />
+          <img
+            class="profile__avatar"
+            src="{{ current_user.url_avatar }}"
+            alt="avatar"
+          />
 
           {{ form.avatar(class="profile__form_file") }}
         </header>

@@ -124,7 +124,7 @@ class TestProfile:
 
         assert b'This field is required.' in response.data
 
-    def test_should_redirect_to_home_when_update_profile(self, client):
+    def test_should_redirect_to_home_when_update_profile(self, client, user):
         data = {
             'name': 'peter',
             'email': 'peter@email.com',

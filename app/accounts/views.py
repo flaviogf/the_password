@@ -1,7 +1,7 @@
-from flask import Blueprint, flash, render_template, redirect, url_for, request
+from flask import (Blueprint, abort, flash, redirect, render_template, request,
+                   url_for)
 from flask_login import current_user, login_required
 
-from app import db
 from app.accounts.forms import CreateAccountForm
 from app.models import Accounts
 
@@ -14,7 +14,7 @@ accounts = Blueprint('accounts', __name__)
 def pagination():
     page = request.args.get('page', 1, type=int)
 
-    accounts = Accounts.query.paginate(page=page, per_page=8)
+    accounts = Accounts.paginate(page)
 
     return render_template('accounts_pagination.html',
                            title='Search Accounts',
@@ -32,9 +32,7 @@ def create():
                            password=form.password.data,
                            user_id=current_user.get_id())
 
-        db.session.add(account)
-
-        db.session.commit()
+        account.save()
 
         flash('Account created successfully.', 'success')
 
@@ -48,17 +46,19 @@ def create():
 @accounts.route('/accounts/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update(id):
-    account = (Accounts.query
-               .filter_by(id=id, user_id=current_user.get_id())
-               .first_or_404())
+    account = Accounts.find_by(id=id, user_id=current_user.get_id())
+
+    if not account:
+        abort(404)
 
     form = CreateAccountForm()
 
     if form.validate_on_submit():
-        account.name = form.name.data
-        account.login = form.login.data
-        account.password = form.password.data
-        db.session.commit()
+        account.update(name=form.name.data,
+                       login=form.login.data,
+                       password=form.password.data)
+
+        account.save()
 
         flash('Account updated successfully.', 'success')
 

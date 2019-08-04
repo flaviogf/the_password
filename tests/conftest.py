@@ -5,6 +5,7 @@ import pytest
 from app import bcrypt as _bcrypt
 from app import create_app
 from app import db as _db
+from app.models import User
 
 
 @pytest.yield_fixture
@@ -38,6 +39,12 @@ def bcrypt(app):
 
 
 @pytest.yield_fixture
-def user(app):
-    with patch('flask_login.utils._get_user') as _user:
-        yield _user
+def user(app, bcrypt):
+    password = bcrypt.generate_password_hash('test')
+
+    naruto = User(name='naruto',
+                  email='naruto@gmail.com',
+                  password=password)
+
+    with patch('flask_login.utils._get_user', new=lambda: naruto):
+        yield naruto
