@@ -5,5 +5,4 @@ COPY Pipfile Pipfile
 RUN pipenv install
 COPY . .
 EXPOSE 8000
-ENV SCRIPT_NAME=/thepassword
-ENTRYPOINT [ "pipenv", "run", "gunicorn", "--bind", "0.0.0.0"]
+ENTRYPOINT ["pipenv", "run", "gunicorn", "-b", "0.0.0.0:8000"]
