@@ -1,7 +1,9 @@
 version: "3"
 
-services: 
+services:
   app:
     build: .
     image: flaviogf/the_password
     command: manage:app
+    ports: 
+      - 5000:8000
