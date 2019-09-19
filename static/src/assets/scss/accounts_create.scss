@@ -47,17 +47,17 @@
 }
 
 .accounts_create__form__show-password {
-  background-color: $primary-color;
+  background-color: #25476a;
   border-radius: 0 2px 2px 0;
   position: absolute;
   cursor: pointer;
-  color: white;
+  color: #fff;
   outline: none;
   border: none;
-  height: 30px;
+  height: 33px;
   width: 30px;
-  right: 0px;
-  top: 24px;
+  right: 0;
+  top: 25px;
 }
 
 .accounts_create__form__show-password:active {
